@@ -1,9 +1,6 @@
 import React from 'react';
+import { Todoapp } from './components/toDoPage/toDoPage';
 
 export const App = () => {
-  return (
-    <>
-      <div>Your todo-app goes here</div>
-    </>
-  );
+  return <Todoapp></Todoapp>;
 };

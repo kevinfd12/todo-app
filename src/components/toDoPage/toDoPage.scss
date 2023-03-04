@@ -7,7 +7,8 @@
 }
 
 .toDoPage__container {
-  background-color: darkcyan;
+  background-color: #dff2d8;
   width: 50vw;
-  height: 100vh;
+  min-height: 100vh;
+  overflow-y: auto;
 }

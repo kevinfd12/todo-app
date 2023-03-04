@@ -7,9 +7,7 @@ interface ListItemProps {
 export const ListItem = ({ indexes, todos }: ListItemProps) => {
   return (
     <div className="ListItem_Wrapper">
-      <div className="ListItem_Entry" key={indexes}>
-        {todos}
-      </div>
+      <div className="ListItem_Entry">{todos}</div>
     </div>
   );
 };

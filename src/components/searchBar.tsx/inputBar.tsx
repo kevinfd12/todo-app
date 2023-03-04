@@ -12,6 +12,9 @@ export function InputBar() {
     setInputValue('');
   };
 
+  // Controlled component - controlling all data in this component
+  // uncontrollled - not storing a value in a state, handled by html.
+
   return (
     <>
       <div className="inputBar">
@@ -36,12 +39,10 @@ export function InputBar() {
 
       <ul>
         {todos.map((todo, index) => (
-          <>
-            <div className="ToDo-Wrapper">
-              <p>To-Do Task #{index}</p>
-              <ListItem indexes={index} todos={todo} />
-            </div>
-          </>
+          <div className="ToDo-Wrapper" key={index}>
+            <p>To-Do Task #{index}</p>
+            <ListItem indexes={index} todos={todo} />
+          </div>
         ))}
       </ul>
     </>

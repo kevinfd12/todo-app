@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button } from '../button/button';
 import { ListItem } from '../utils/listItem';
 import './inputBar.scss';
 
@@ -8,8 +9,15 @@ export function InputBar() {
 
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault(); // The page was being refreshed everytime I submitted the form.
-    setTodos([...todos, inputValue]);
-    setInputValue('');
+    if (inputValue !== '') {
+      setTodos([...todos, inputValue]);
+      setInputValue('');
+    }
+  };
+
+  const handleDelete = (deletetodo: string) => {
+    const todoDelete = todos.filter((todo) => todo !== deletetodo); //Keep everything as long as it is not equivalent to deletetodo
+    setTodos(todoDelete);
   };
 
   // Controlled component - controlling all data in this component
@@ -41,7 +49,9 @@ export function InputBar() {
         {todos.map((todo, index) => (
           <div className="ToDo-Wrapper" key={index}>
             <p>To-Do Task #{index}</p>
-            <ListItem indexes={index} todos={todo} />
+            <ListItem indexes={index} todos={todo}>
+              <Button value={'delete'} onButtonClick={() => handleDelete(todo)}></Button>
+            </ListItem>
           </div>
         ))}
       </ul>

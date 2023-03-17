@@ -3,25 +3,36 @@ import { Button } from '../button/button';
 import { ListItem } from '../utils/listItem';
 import './inputBar.scss';
 
+interface Todo {
+  id: number;
+  value: string;
+}
+
 export function InputBar() {
-  const [todos, setTodos] = useState<string[]>([]); // at first I only had one useState - const [todo, setTodo] = useState(''); why do we need two?
+  const [todos, setTodos] = useState<Todo[]>([]);
   const [inputValue, setInputValue] = useState('');
 
+  const getNextId = () => {
+    let id = 1;
+    while (todos.some((todo) => todo.id === id)) {
+      id++;
+    }
+    return id;
+  };
+
   const handleSubmit = (event: { preventDefault: () => void }) => {
-    event.preventDefault(); // The page was being refreshed everytime I submitted the form.
+    event.preventDefault();
     if (inputValue !== '') {
-      setTodos([...todos, inputValue]);
+      const newTodo = { id: getNextId(), value: inputValue };
+      setTodos([...todos, newTodo]);
       setInputValue('');
     }
   };
 
-  const handleDelete = (deletetodo: string) => {
-    const todoDelete = todos.filter((todo) => todo !== deletetodo); //Keep everything as long as it is not equivalent to deletetodo
+  const handleDelete = (deleteTodo: Todo) => {
+    const todoDelete = todos.filter((todo) => todo.id !== deleteTodo.id);
     setTodos(todoDelete);
   };
-
-  // Controlled component - controlling all data in this component
-  // uncontrollled - not storing a value in a state, handled by html.
 
   return (
     <>
@@ -46,10 +57,10 @@ export function InputBar() {
       </div>
 
       <ul>
-        {todos.map((todo, index) => (
-          <div className="ToDo-Wrapper" key={index}>
-            <p>To-Do Task #{index}</p>
-            <ListItem indexes={index} todos={todo}>
+        {todos.map((todo) => (
+          <div className="ToDo-Wrapper" key={todo.id}>
+            <p>To-Do Task #{todo.id}</p>
+            <ListItem indexes={todo.id} todos={todo.value}>
               <Button value={'delete'} onButtonClick={() => handleDelete(todo)}></Button>
             </ListItem>
           </div>

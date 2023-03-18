@@ -1,15 +1,33 @@
+import { Button } from '../button/button';
+import { Todo } from '../searchBar.tsx/inputBar';
 import './listItem.scss';
+
 interface ListItemProps {
-  indexes: number;
-  todos: string;
-  children?: React.ReactNode;
+  todo: Todo;
+  handleDelete: (todo: Todo) => void;
+  index: number;
+  arrLength: number;
+  handleEditMode: (todo: Todo) => void;
 }
 
-export const ListItem = ({ todos, children }: ListItemProps) => {
+export const ListItem = ({
+  todo,
+  handleDelete,
+  index,
+  arrLength,
+  handleEditMode,
+}: ListItemProps) => {
   return (
-    <div className="ListItem_Wrapper">
-      <div className="ListItem_Entry">
-        {todos} {children}{' '}
+    <div className="ToDo-Wrapper">
+      <p>
+        To-Do Task #{index} of {arrLength}
+      </p>
+      <div className="ListItem_Wrapper">
+        <div className="ListItem_Entry">
+          {todo.value}
+          <Button value={'delete'} onButtonClick={() => handleDelete(todo)}></Button>
+          <Button value={'edit'} onButtonClick={() => handleEditMode(todo)}></Button>
+        </div>
       </div>
     </div>
   );

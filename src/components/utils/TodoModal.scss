@@ -1,0 +1,18 @@
+.cover {
+  background-color: rgba(119, 104, 113, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  z-index: 1;
+  justify-content: center;
+  align-items: center;
+}
+.modal {
+  width: 40rem;
+  height: 40rem;
+  background-color: goldenrod;
+  z-index: 2;
+}

@@ -11,6 +11,8 @@ interface Todo {
 export function InputBar() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [inputValue, setInputValue] = useState('');
+  const [editMode, setEditMode] = useState(false);
+  const [newItem, setNewItem] = useState('');
 
   const getNextId = () => {
     let id = 1;
@@ -32,6 +34,10 @@ export function InputBar() {
   const handleDelete = (deleteTodo: Todo) => {
     const todoDelete = todos.filter((todo) => todo.id !== deleteTodo.id);
     setTodos(todoDelete);
+  };
+
+  const handleEdit = () => {
+    setEditMode(true);
   };
 
   return (
@@ -62,6 +68,19 @@ export function InputBar() {
             <p>To-Do Task #{todo.id}</p>
             <ListItem indexes={todo.id} todos={todo.value}>
               <Button value={'delete'} onButtonClick={() => handleDelete(todo)}></Button>
+              {editMode ? (
+                <form onSubmit={handleSubmit}>
+                  <input
+                    className="input"
+                    value={newItem}
+                    onChange={(event) => setNewItem(event.target.value)}
+                    placeholder="edit"
+                  ></input>
+                  <input type="submit" value="submit"></input>
+                </form>
+              ) : (
+                <Button value={'edit'} onButtonClick={() => setEditMode(true)}></Button>
+              )}
             </ListItem>
           </div>
         ))}

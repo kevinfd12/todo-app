@@ -1,6 +1,6 @@
 import './toDoPage.scss';
 // import { Button } from '../button/button';
-import { InputBar } from '../searchBar.tsx/inputBar';
+import { InputBar } from '../inputBar/inputBar';
 
 export function Todoapp() {
   return (

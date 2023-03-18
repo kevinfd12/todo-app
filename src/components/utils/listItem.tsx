@@ -1,5 +1,5 @@
 import { Button } from '../button/button';
-import { Todo } from '../searchBar.tsx/inputBar';
+import { Todo } from '../inputBar/inputBar';
 import './listItem.scss';
 
 interface ListItemProps {

@@ -1,7 +1,6 @@
 import './TodoModal.scss';
 import { Button } from '../button/button';
-import { useState } from 'react';
-import { Todo } from '../searchBar.tsx/inputBar';
+import { Todo } from '../inputBar/inputBar';
 
 interface TodoModalProps {
   handleEditMode: (id: undefined) => void;

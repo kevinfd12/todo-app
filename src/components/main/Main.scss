@@ -1,4 +1,4 @@
-@import '../../styles/main.scss';
+@import '../../styles/mainStyles.scss';
 
 .inputBar {
   font-size: 1rem;
@@ -24,7 +24,7 @@
   padding-inline-end: 40px;
 }
 .ToDo-Wrapper {
-  background-color: #7ebdc3;
+  background-color: $columbiablue;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
   min-height: 100%;

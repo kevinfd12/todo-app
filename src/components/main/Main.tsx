@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { Button } from '../button/button';
+import { InputSearch } from '../inputSearch/inputSearch';
 import { ListItem } from '../utils/listItem';
 import { TodoModal } from '../utils/TodoModal';
-import './inputBar.scss';
+import './Main.scss';
 
 export interface Todo {
   id: number;
   value: string;
 }
 
-export function InputBar() {
+export function Main() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [editMode, setEditMode] = useState(false);
@@ -52,23 +52,11 @@ export function InputBar() {
 
   return (
     <>
-      <div className="inputBar">
-        <div className="inputBar__wrapper">
-          <div className="inputBar__input-wrapper">
-            <label htmlFor="inputBar">Add a task to your to-do list, </label>
-            <div className="inputSubmit">
-              <input
-                type="text"
-                className="inputBar__input"
-                placeholder="add a todo"
-                value={inputValue}
-                onChange={(event) => setInputValue(event.target.value)}
-              ></input>
-              <Button value="submit" onButtonClick={handleSubmit}></Button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <InputSearch
+        handleSubmit={handleSubmit}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+      />
 
       <ul>
         {todos.map((todo, index, arr) => (

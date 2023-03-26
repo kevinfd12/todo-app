@@ -1,0 +1,54 @@
+@import '../../styles/mainStyles.scss';
+
+.InputSearch {
+  font-size: 3.6rem;
+
+  &__input-wrapper {
+    background-color: whitesmoke;
+    margin-top: 2rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__input-container {
+    background-color: $columbiablue;
+    width: 40rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    border: 2px solid $columbiablue;
+    box-shadow: 0.2rem 0.2rem;
+  }
+
+  &__input {
+    font-family: $primary;
+    color: $columbiablue;
+  }
+
+  &__button {
+    height: inherit;
+    width: 8rem;
+    height: 2rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 65%;
+    border: solid 0.2rem $indianred;
+    border-left: none;
+    background-color: $indianred;
+    transition: 0.1s;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      background-size: 70%;
+    }
+
+    &:active {
+      background-size: 60%;
+    }
+  }
+}

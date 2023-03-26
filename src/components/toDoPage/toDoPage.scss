@@ -1,4 +1,5 @@
-@import '../../styles/main.scss';
+@import '../../styles/mainStyles.scss';
+
 .section {
   min-height: 100vh;
   flex-direction: column;
@@ -7,7 +8,7 @@
 }
 
 .toDoPage__container {
-  background-color: #dff2d8;
+  background-color: whitesmoke;
   width: 50vw;
   min-height: 100vh;
   overflow-y: auto;

@@ -27,6 +27,17 @@ export function Main() {
     return id;
   };
 
+  useEffect(() => {
+    const storedTodos = localStorage.getItem('todos');
+    if (storedTodos) {
+      setTodos(JSON.parse(storedTodos));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
   const handleSubmit = () => {
     if (inputValue !== '') {
       const newTodo = { id: getNextId(), value: inputValue };

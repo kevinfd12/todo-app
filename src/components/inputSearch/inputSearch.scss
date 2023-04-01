@@ -15,13 +15,14 @@
   &__input-container {
     background-color: $columbiablue;
     width: 40rem;
-    height: 5rem;
+    height: 6rem;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
     border: 2px solid $columbiablue;
     box-shadow: 0.2rem 0.2rem;
+    gap: 2rem;
   }
 
   &__input {
@@ -30,25 +31,28 @@
   }
 
   &__button {
-    height: inherit;
+    font-size: 1.5rem;
+    display: flex;
     width: 8rem;
-    height: 2rem;
+    align-items: center;
+    justify-content: center;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 65%;
-    border: solid 0.2rem $indianred;
-    border-left: none;
+    background-size: 50%;
     background-color: $indianred;
-    transition: 0.1s;
+    border-radius: 10px;
     cursor: pointer;
+    height: 3rem;
+    color: white;
+    transition: background-color 0.2s ease-in-out;
 
     &:hover,
     &:focus {
-      background-size: 70%;
+      background-color: darken($indianred, 10%);
     }
 
     &:active {
-      background-size: 60%;
+      background-color: darken($indianred, 20%);
     }
   }
 }

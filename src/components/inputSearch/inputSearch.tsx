@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './inputSearch.scss';
+import { Button } from '../button/button';
 
 interface inputSearchProps {
   handleSubmit: () => void;
@@ -19,7 +20,9 @@ export const InputSearch = ({ handleSubmit, inputValue, setInputValue }: inputSe
             value={inputValue}
             onChange={(event) => setInputValue(event.target.value)}
           />
-          <div className="InputSearch__button" onClick={handleSubmit}></div>
+          <div className="InputSearch__button" onClick={handleSubmit}>
+            Submit
+          </div>
         </div>
       </div>
     </div>

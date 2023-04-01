@@ -19,12 +19,12 @@ export const ListItem = ({
 }: ListItemProps) => {
   return (
     <div className="ToDo-Wrapper">
-      <p>
+      <p className="ToDo-Index">
         To-Do Task #{index} of {arrLength}
       </p>
       <div className="ListItem_Wrapper">
-        <div className="ListItem_Entry">
-          {todo.value}
+        <div className="ListItem_Entry">{todo.value}</div>
+        <div className="ListItem_Buttons">
           <Button value={'delete'} onButtonClick={() => handleDelete(todo)}></Button>
           <Button value={'edit'} onButtonClick={() => handleEditMode(todo)}></Button>
         </div>

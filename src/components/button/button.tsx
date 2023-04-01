@@ -9,7 +9,7 @@ interface ButtonProps {
 export function Button({ value, onButtonClick }: ButtonProps) {
   return (
     <>
-      <div className="reuse_button" onClick={onButtonClick}>
+      <div className="btn btn-bottom-stripe btn-bottom-stripe--black" onClick={onButtonClick}>
         {value}
       </div>
     </>

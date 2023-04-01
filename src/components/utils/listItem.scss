@@ -1,3 +1,13 @@
+.ToDo-Wrapper {
+  margin-bottom: 2rem;
+}
+
+.ToDo-Index {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #777777;
+}
+
 .ListItem_Wrapper {
   background-color: #ffffff;
   border-radius: 1rem;
@@ -8,4 +18,19 @@
   padding: 0 2rem;
   word-wrap: break-word;
   overflow-wrap: break-word;
+}
+
+.ListItem_Entry {
+  font-size: 2rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.ListItem_Buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
 }

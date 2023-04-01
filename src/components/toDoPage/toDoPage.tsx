@@ -9,7 +9,6 @@ export function Todoapp() {
       <div className="toDoPage__container">
         <Main />
       </div>
-      {/* <Button onButtonClick={} value="Add Todo"></Button> */}
     </div>
   );
 }

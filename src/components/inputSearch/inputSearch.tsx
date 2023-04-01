@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
 import './inputSearch.scss';
-import { Button } from '../button/button';
 
 interface inputSearchProps {
   handleSubmit: () => void;

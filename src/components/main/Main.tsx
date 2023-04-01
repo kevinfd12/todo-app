@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { InputSearch } from '../inputSearch/inputSearch';
 import { ListItem } from '../utils/listItem';
 import { TodoModal } from '../utils/TodoModal';
@@ -14,6 +14,10 @@ export function Main() {
   const [inputValue, setInputValue] = useState('');
   const [editMode, setEditMode] = useState(false);
   const [editedTodo, setEditedTodo] = useState<Todo | undefined>(undefined);
+
+  useEffect(() => {
+    console.log(localStorage.getItem('todos'));
+  }, []);
 
   const getNextId = () => {
     let id = 1;

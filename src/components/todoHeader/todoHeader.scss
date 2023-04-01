@@ -1,0 +1,24 @@
+.todoHeader {
+  &__wrapper {
+    width: 50vw;
+    height: 100vh;
+    background-color: whitesmoke;
+    position: relative;
+  }
+
+  &__Foreground {
+    width: 100%;
+    position: absolute;
+    height: 80%;
+    z-index: 2; /* higher z-index than the midground */
+    bottom: 0;
+  }
+
+  &__Midground {
+    position: absolute;
+    z-index: 1; /* lower z-index than the foreground */
+    height: 110%;
+    width: 100%;
+    transform: translateY(-300px);
+  }
+}

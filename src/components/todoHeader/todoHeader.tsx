@@ -6,7 +6,7 @@ import './todoHeader.scss';
 
 export const TodoHeader = () => {
   return (
-    <div className="todoHeader__wrapper">
+    <div className="todoHeader__header">
       <img src={img1} className="todoHeader__Foreground" alt="Groceries1"></img>
       <img src={img2} className="todoHeader__Midground" alt="Groceries2"></img>
       <img src={img3} className="todoHeader__CounterTop" alt="Groceries3"></img>

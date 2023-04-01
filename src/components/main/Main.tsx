@@ -21,6 +21,7 @@ export function Main() {
 
   const getNextId = () => {
     let id = 1;
+    // eslint-disable-next-line
     while (todos.some((todo) => todo.id === id)) {
       id++;
     }
@@ -30,20 +31,22 @@ export function Main() {
   useEffect(() => {
     const storedTodos = localStorage.getItem('todos');
     if (storedTodos) {
+      console.log(storedTodos);
       setTodos(JSON.parse(storedTodos));
     }
   }, []);
-
-  useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos));
-  }, [todos]);
 
   const handleSubmit = () => {
     if (inputValue !== '') {
       const newTodo = { id: getNextId(), value: inputValue };
       setTodos([...todos, newTodo]);
+      updateLocalStorage([...todos, newTodo]);
       setInputValue('');
     }
+  };
+
+  const updateLocalStorage = (todos: Todo[]) => {
+    localStorage.setItem('todos', JSON.stringify(todos));
   };
 
   const handleModalSubmit = () => {
@@ -52,6 +55,7 @@ export function Main() {
     }
     const newTodos = todos.filter((todo) => todo.id !== editedTodo.id);
     setTodos([...newTodos, editedTodo]);
+    updateLocalStorage([...newTodos, editedTodo]);
     handleEditMode(undefined);
   };
 
@@ -63,6 +67,7 @@ export function Main() {
   const handleDelete = (deleteTodo: Todo) => {
     const todoDelete = todos.filter((todo) => todo.id !== deleteTodo.id);
     setTodos(todoDelete);
+    updateLocalStorage(todoDelete);
   };
 
   return (
@@ -73,18 +78,16 @@ export function Main() {
         setInputValue={setInputValue}
       />
 
-      <ul>
-        {todos.map((todo, index, arr) => (
-          <ListItem
-            todo={todo}
-            handleDelete={handleDelete}
-            index={index + 1}
-            arrLength={arr.length}
-            handleEditMode={handleEditMode}
-            key={todo.id}
-          />
-        ))}
-      </ul>
+      {todos.map((todo, index, arr) => (
+        <ListItem
+          todo={todo}
+          handleDelete={handleDelete}
+          index={index + 1}
+          arrLength={arr.length}
+          handleEditMode={handleEditMode}
+          key={todo.id}
+        />
+      ))}
       {editMode && (
         <TodoModal
           handleEditMode={handleEditMode}

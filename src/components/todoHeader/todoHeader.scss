@@ -1,31 +1,40 @@
 .todoHeader {
-  &__wrapper {
+  &__header {
     width: 50vw;
-    height: 100vh;
-    background-color: red;
+    min-height: 100vh;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    z-index: -1;
+  }
+
+  &__Foreground,
+  &__Midground,
+  &__CounterTop {
+    width: 100%;
+    position: absolute;
+    object-fit: cover;
+    z-index: -1;
   }
 
   &__Foreground {
-    width: 100%;
-    position: absolute;
     height: 80%;
-    z-index: 2; /* higher z-index than the midground */
     bottom: 10%;
+    transform: translateZ(-5px) scale(1.2);
+    z-index: 2;
   }
 
   &__Midground {
-    position: absolute;
-    z-index: 1; /* lower z-index than the foreground */
     height: 100%;
-    width: 100%;
+    transform: translateZ(-10px) scale(2);
+    right: 1%;
   }
 
   &__CounterTop {
-    position: absolute;
-    z-index: 3;
     height: 80%;
-    width: 100%;
     bottom: 0;
+    transform: translateZ(0px) scale(1);
   }
 }

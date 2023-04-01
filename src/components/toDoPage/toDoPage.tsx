@@ -4,7 +4,7 @@ import { Main } from '../main/Main';
 
 export function Todoapp() {
   return (
-    <div className="section">
+    <div className="wrapper">
       <TodoHeader />
       <div className="toDoPage__container">
         <Main />

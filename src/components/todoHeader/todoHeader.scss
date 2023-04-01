@@ -2,7 +2,7 @@
   &__wrapper {
     width: 50vw;
     height: 100vh;
-    background-color: whitesmoke;
+    background-color: red;
     position: relative;
   }
 
@@ -11,14 +11,21 @@
     position: absolute;
     height: 80%;
     z-index: 2; /* higher z-index than the midground */
-    bottom: 0;
+    bottom: 10%;
   }
 
   &__Midground {
     position: absolute;
     z-index: 1; /* lower z-index than the foreground */
-    height: 110%;
+    height: 100%;
     width: 100%;
-    transform: translateY(-300px);
+  }
+
+  &__CounterTop {
+    position: absolute;
+    z-index: 3;
+    height: 80%;
+    width: 100%;
+    bottom: 0;
   }
 }

@@ -72,30 +72,31 @@ export function Main() {
 
   return (
     <>
-      <InputSearch
-        handleSubmit={handleSubmit}
-        inputValue={inputValue}
-        setInputValue={setInputValue}
-      />
-
-      {todos.map((todo, index, arr) => (
-        <ListItem
-          todo={todo}
-          handleDelete={handleDelete}
-          index={index + 1}
-          arrLength={arr.length}
-          handleEditMode={handleEditMode}
-          key={todo.id}
+      <div className="main">
+        <InputSearch
+          handleSubmit={handleSubmit}
+          inputValue={inputValue}
+          setInputValue={setInputValue}
         />
-      ))}
-      {editMode && (
-        <TodoModal
-          handleEditMode={handleEditMode}
-          editedTodo={editedTodo}
-          setEditedTodo={setEditedTodo}
-          handleModalSubmit={handleModalSubmit}
-        />
-      )}
+        {todos.map((todo, index, arr) => (
+          <ListItem
+            todo={todo}
+            handleDelete={handleDelete}
+            index={index + 1}
+            arrLength={arr.length}
+            handleEditMode={handleEditMode}
+            key={todo.id}
+          />
+        ))}
+        {editMode && (
+          <TodoModal
+            handleEditMode={handleEditMode}
+            editedTodo={editedTodo}
+            setEditedTodo={setEditedTodo}
+            handleModalSubmit={handleModalSubmit}
+          />
+        )}
+      </div>
     </>
   );
 }

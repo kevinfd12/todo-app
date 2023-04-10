@@ -1,34 +1,6 @@
 @import '../../styles/mainStyles.scss';
 
-.inputBar {
-  font-size: 1rem;
-  display: flex;
-  justify-content: center;
-}
-
-.inputBar__wrapper {
-  display: flex;
-  align-items: center;
-}
-
-.inputBar__input-wrapper {
-  display: flex;
+.main {
   flex-direction: column;
   align-items: center;
-}
-.inputSubmit {
-  display: flex;
-  flex-direction: row;
-}
-.ul {
-  padding-inline-end: 40px;
-}
-.ToDo-Wrapper {
-  background-color: $columbiablue;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
-  //min-height: 100%;
-  width: 80%;
-  margin: 0 auto;
-  padding: 20px;
 }

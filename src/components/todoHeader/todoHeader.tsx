@@ -10,6 +10,10 @@ export const TodoHeader = () => {
       <img src={img1} className="todoHeader__Foreground" alt="Groceries1"></img>
       <img src={img2} className="todoHeader__Midground" alt="Groceries2"></img>
       <img src={img3} className="todoHeader__CounterTop" alt="Groceries3"></img>
+      <div className="todoHeader__titleWrapper">
+        <h1 className="todoHeader__title">Welcome,</h1>
+        <h1 className="todoHeader__subTitle">Scroll Below!</h1>
+      </div>
     </div>
   );
 };

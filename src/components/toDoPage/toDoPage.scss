@@ -1,18 +1,41 @@
 @import '../../styles/mainStyles.scss';
 
-.wrapper {
+.highestwrapper {
   height: 100vh;
-  flex-direction: column;
-  //overflow-y: auto;
-  overflow-x: hidden;
   display: flex;
+  justify-content: center;
   align-items: center;
+}
+
+.wrapper {
+  //display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   perspective: 10px;
+  scrollbar-width: none; /* for Firefox */
+  -ms-overflow-style: none; /* for Internet Explorer and Edge */
 }
 
 .toDoPage__container {
   background-color: whitesmoke;
-  width: 50vw;
-  min-height: clamp(100vh, 100%, 100%);
-  overflow-y: none;
+  flex: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.toDoPage__container > * {
+  margin: 1rem;
+}
+
+.toDoPage__container > :last-child {
+  margin-bottom: 0;
+}
+
+.wrapper::-webkit-scrollbar {
+  display: none;
 }

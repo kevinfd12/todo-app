@@ -4,10 +4,12 @@ import { Main } from '../main/Main';
 
 export function Todoapp() {
   return (
-    <div className="wrapper">
-      <TodoHeader />
-      <div className="toDoPage__container">
-        <Main />
+    <div className="highestwrapper">
+      <div className="wrapper">
+        <TodoHeader />
+        <div className="toDoPage__container">
+          <Main />
+        </div>
       </div>
     </div>
   );

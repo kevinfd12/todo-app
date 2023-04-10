@@ -20,7 +20,6 @@
 
 .toDoPage__container {
   background-color: whitesmoke;
-  flex: 1;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,14 +27,7 @@
   align-items: center;
 }
 
-.toDoPage__container > * {
-  margin: 1rem;
-}
-
-.toDoPage__container > :last-child {
-  margin-bottom: 0;
-}
-
+/* Hide scrollbar for Webkit-based browsers (Chrome, Safari, etc.) */
 .wrapper::-webkit-scrollbar {
   display: none;
 }

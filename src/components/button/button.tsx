@@ -4,12 +4,13 @@ import './button.scss';
 interface ButtonProps {
   value: string;
   onButtonClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  color?: string;
 }
 
-export function Button({ value, onButtonClick }: ButtonProps) {
+export function Button({ value, onButtonClick, color = '#3dd1e7' }: ButtonProps) {
   return (
     <>
-      <div className="btn btn-bottom-stripe btn-bottom-stripe--black" onClick={onButtonClick}>
+      <div className="button" onClick={onButtonClick} style={{ backgroundColor: color }}>
         {value}
       </div>
     </>

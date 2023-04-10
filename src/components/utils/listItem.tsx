@@ -25,7 +25,11 @@ export const ListItem = ({
       <div className="ListItem_Wrapper">
         <div className="ListItem_Entry">{todo.value}</div>
         <div className="ListItem_Buttons">
-          <Button value={'delete'} onButtonClick={() => handleDelete(todo)}></Button>
+          <Button
+            value={'delete'}
+            onButtonClick={() => handleDelete(todo)}
+            color="#FF3131"
+          ></Button>
           <Button value={'edit'} onButtonClick={() => handleEditMode(todo)}></Button>
         </div>
       </div>

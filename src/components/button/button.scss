@@ -1,82 +1,54 @@
-.btn {
-  font-family: Arial, Helvetica, sans-serif;
-  text-transform: uppercase;
-}
-
-.btn:hover .btn-slide-show-text1 {
-  margin-left: 65px;
-}
-
-.btn-bottom-stripe {
-  border: 0px;
-  width: 10%;
-  background: rgb(255, 255, 255);
-  font-style: inherit;
-  font-variant: inherit;
-  font-weight: inherit;
-  font-stretch: inherit;
-  font-size: inherit;
-  font-family: inherit;
-  font-optical-sizing: inherit;
-  font-kerning: inherit;
-  font-feature-settings: inherit;
-  font-variation-settings: inherit;
-  line-height: normal;
-  cursor: pointer;
-  display: block;
-  text-decoration: none;
-  text-transform: uppercase;
-  padding: 16px 56px 22px;
-  border-radius: 6px;
-  margin: 16px 0px 16px;
-  transition: all 0.5s ease 0s;
-  overflow: hidden;
+/* CSS */
+.button {
+  border: 0 solid #e5e7eb;
+  box-sizing: border-box;
+  color: #000000;
+  display: flex;
+  font-family: ui-sans-serif, system-ui, -apple-system, system-ui, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
+  font-size: 1rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1.75rem;
+  padding: 0.75rem 1.65rem;
   position: relative;
+  text-align: center;
+  text-decoration: none #000000 solid;
+  text-decoration-thickness: auto;
+  width: 40%;
+  max-width: 460px;
+  position: relative;
+  cursor: pointer;
+  transform: rotate(-2deg);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-bottom: 4rem;
 }
 
-.btn-bottom-stripe::after {
+.button:focus {
+  outline: 0;
+}
+
+.button:after {
   content: '';
-  display: block;
-  height: 7px;
-  width: 100%;
-  backface-visibility: hidden;
   position: absolute;
-  left: 0px;
-  bottom: 0px;
-  background-size: 7px 7px;
+  border: 1px solid #000000;
+  bottom: 4px;
+  left: 4px;
+  width: calc(100% - 1px);
+  height: calc(100% - 1px);
 }
 
-.btn-bottom-stripe:hover {
-  color: rgb(255, 255, 255);
+.button:hover:after {
+  bottom: 2px;
+  left: 2px;
 }
 
-.btn-bottom-stripe:hover::after {
-  background-image: repeating-linear-gradient(
-    45deg,
-    rgb(255, 255, 255),
-    rgb(255, 255, 255) 1px,
-    transparent 2px,
-    transparent 5px
-  );
-  animation: 12s linear 0s infinite normal forwards running stripe-slide;
-}
-
-.btn-bottom-stripe--black {
-  color: rgb(51, 51, 51);
-  border: 2px solid rgb(51, 51, 51);
-}
-
-.btn-bottom-stripe--black::after {
-  border-top: 2px solid rgb(51, 51, 51);
-  background-image: repeating-linear-gradient(
-    45deg,
-    rgb(51, 51, 51),
-    rgb(51, 51, 51) 1px,
-    transparent 2px,
-    transparent 5px
-  );
-}
-
-.btn-bottom-stripe--black:hover {
-  background-color: rgb(51, 51, 51);
+@media (min-width: 768px) {
+  .button {
+    padding: 0.75rem 3rem;
+    font-size: 1.25rem;
+  }
 }

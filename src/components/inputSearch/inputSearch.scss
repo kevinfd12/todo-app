@@ -13,27 +13,29 @@
   }
 
   &__input-container {
-    background-color: $columbiablue;
-    width: 40rem;
-    height: 6rem;
+    background-color: $neonBlue;
+    width: 60rem;
+    height: 8rem;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    border: 2px solid $columbiablue;
-    box-shadow: 0.2rem 0.2rem;
+    border: 2px solid $neonBlue;
+    box-shadow: 0.3rem 0.2rem;
     gap: 2rem;
   }
 
   &__input {
     font-family: $primary;
-    color: $columbiablue;
+    color: $neonBlue;
+    width: 80%;
+    margin-left: 4rem;
   }
 
   &__button {
     font-size: 1.5rem;
     display: flex;
-    width: 8rem;
+    width: 16rem;
     align-items: center;
     justify-content: center;
     background-repeat: no-repeat;
@@ -42,9 +44,11 @@
     background-color: $indianred;
     border-radius: 10px;
     cursor: pointer;
-    height: 3rem;
-    color: white;
+    height: 4rem;
+    color: black;
     transition: background-color 0.2s ease-in-out;
+    margin-right: 2rem;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
 
     &:hover,
     &:focus {
@@ -53,6 +57,14 @@
 
     &:active {
       background-color: darken($indianred, 20%);
+      transform: translateY(0.2rem);
+      box-shadow: 0.1rem 0.1rem;
+    }
+
+    &:focus:not(:active),
+    &:hover:not(:active) {
+      transform: translateY(0);
+      box-shadow: 0.3rem 0.2rem;
     }
   }
 }

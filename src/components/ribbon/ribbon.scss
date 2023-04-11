@@ -1,0 +1,54 @@
+@import '../../styles/variables.scss';
+
+.RibbonBox {
+  position: absolute;
+  width: 8rem;
+  height: 8rem;
+  overflow: hidden;
+  &--rt {
+    @extend .RibbonBox;
+    top: -0.55rem;
+    right: -0.55rem;
+  }
+}
+
+.Ribbon {
+  position: absolute;
+  height: 2rem;
+  bottom: 0;
+  transform-style: preserve-3d;
+  width: 9.7rem;
+
+  &.red {
+    background-color: darken($neonRed, 5);
+
+    &::before,
+    &::after {
+      border: 0.2rem solid darken($neonRed, 15);
+    }
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+  }
+
+  &--rt {
+    @extend .Ribbon;
+    transform: translate(0.2rem, -4rem) rotate(45deg);
+
+    &::before {
+      right: 0;
+      transform-origin: top left;
+      transform: translateZ(-1px) rotate(45deg) translateX(0.1rem);
+    }
+
+    &::after {
+      left: 0;
+      transform-origin: top right;
+      transform: translateZ(-1px) rotate(315deg) translateX(-0.1rem);
+    }
+  }
+}

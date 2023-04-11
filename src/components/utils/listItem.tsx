@@ -1,5 +1,6 @@
 import { Button } from '../button/button';
 import { Todo } from '../main/Main';
+import { Ribbon } from '../ribbon/ribbon';
 import './listItem.scss';
 
 interface ListItemProps {
@@ -23,6 +24,7 @@ export const ListItem = ({
         To-Do Task #{index} of {arrLength}
       </p>
       <div className="ListItem_Wrapper">
+        <Ribbon />
         <div className="ListItem_Entry">{todo.value}</div>
         <div className="ListItem_Buttons">
           <Button

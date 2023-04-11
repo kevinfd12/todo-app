@@ -18,6 +18,8 @@
   bottom: 0;
   transform-style: preserve-3d;
   width: 9.7rem;
+  opacity: 0;
+  transition: opacity 20s;
 
   &.red {
     background-color: darken($neonRed, 5);
@@ -50,5 +52,9 @@
       transform-origin: top right;
       transform: translateZ(-1px) rotate(315deg) translateX(-0.1rem);
     }
+  }
+
+  &.visible {
+    opacity: 1;
   }
 }

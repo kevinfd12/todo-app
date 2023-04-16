@@ -1,19 +1,23 @@
+import { Todo } from '../main/Main';
 import './ribbon.scss';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
-export const Ribbon = () => {
-  const [visible, setVisible] = useState(true);
+interface ribbonProps {
+  todo: Todo;
+  isNewHandler: any;
+}
 
+export const Ribbon = ({ todo, isNewHandler }: ribbonProps) => {
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setVisible(false);
-    }, 5000); //this is a delay of 5 seconds before it even starts to fade.
-    return () => clearTimeout(timer);
+    isNewHandler(todo);
+    // eslint-disable-next-line
   }, []);
 
   return (
     <div className={`RibbonBox--rt`}>
-      <span className={`Ribbon--rt red ${visible ? 'visible' : ''}`} />
+      <span className={`Ribbon--rt red ${todo.isNew ? 'visible' : ''}`}>
+        <span className="Ribbon__text">NEW!</span>
+      </span>
     </div>
   );
 };

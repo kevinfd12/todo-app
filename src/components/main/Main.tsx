@@ -7,6 +7,7 @@ import './Main.scss';
 export interface Todo {
   id: number;
   value: string;
+  isNew: boolean;
 }
 
 export function Main() {
@@ -14,6 +15,8 @@ export function Main() {
   const [inputValue, setInputValue] = useState('');
   const [editMode, setEditMode] = useState(false);
   const [editedTodo, setEditedTodo] = useState<Todo | undefined>(undefined);
+
+  console.log(todos);
 
   useEffect(() => {
     console.log(localStorage.getItem('todos'));
@@ -38,9 +41,9 @@ export function Main() {
 
   const handleSubmit = () => {
     if (inputValue !== '') {
-      const newTodo = { id: getNextId(), value: inputValue };
-      setTodos([...todos, newTodo]);
-      updateLocalStorage([...todos, newTodo]);
+      const newTodo = { id: getNextId(), value: inputValue, isNew: true };
+      setTodos([newTodo, ...todos]);
+      updateLocalStorage([newTodo, ...todos]);
       setInputValue('');
     }
   };
@@ -55,7 +58,7 @@ export function Main() {
     }
     const newTodos = todos.filter((todo) => todo.id !== editedTodo.id);
     setTodos([...newTodos, editedTodo]);
-    updateLocalStorage([...newTodos, editedTodo]);
+    updateLocalStorage([editedTodo, ...newTodos]);
     handleEditMode(undefined);
   };
 
@@ -68,6 +71,19 @@ export function Main() {
     const todoDelete = todos.filter((todo) => todo.id !== deleteTodo.id);
     setTodos(todoDelete);
     updateLocalStorage(todoDelete);
+  };
+
+  const isNewHandler = (ribbonTodo: Todo) => {
+    if (ribbonTodo.isNew) {
+      const activateTodo = { ...ribbonTodo, isNew: false };
+      const oldTodos = todos.filter((todo) => todo.id !== ribbonTodo.id);
+
+      updateLocalStorage([activateTodo, ...oldTodos]);
+      const timer = setTimeout(() => {
+        setTodos([activateTodo, ...oldTodos]);
+      }, 1500); //this is a delay of 3 seconds before it even starts to fade.
+      return () => clearTimeout(timer);
+    }
   };
 
   return (
@@ -86,6 +102,7 @@ export function Main() {
             arrLength={arr.length}
             handleEditMode={handleEditMode}
             key={todo.id}
+            isNewHandler={isNewHandler}
           />
         ))}
         {editMode && (

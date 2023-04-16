@@ -9,6 +9,7 @@ interface ListItemProps {
   index: number;
   arrLength: number;
   handleEditMode: (todo: Todo) => void;
+  isNewHandler: any;
 }
 
 export const ListItem = ({
@@ -17,6 +18,7 @@ export const ListItem = ({
   index,
   arrLength,
   handleEditMode,
+  isNewHandler,
 }: ListItemProps) => {
   return (
     <div className="ToDo-Wrapper">
@@ -24,7 +26,7 @@ export const ListItem = ({
         To-Do Task #{index} of {arrLength}
       </p>
       <div className="ListItem_Wrapper">
-        <Ribbon />
+        <Ribbon todo={todo} isNewHandler={isNewHandler} />
         <div className="ListItem_Entry">{todo.value}</div>
         <div className="ListItem_Buttons">
           <Button

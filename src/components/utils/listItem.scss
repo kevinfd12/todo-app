@@ -11,9 +11,10 @@
 }
 
 .ToDo-Index {
-  font-size: 1.2rem;
+  font-size: 2rem;
   margin-bottom: 0.5rem;
-  color: #777777;
+  color: white;
+  font-family: $secondary;
 }
 
 .ListItem_Wrapper {
@@ -27,6 +28,7 @@
   padding: 0 2rem;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  margin: 0 auto;
 }
 
 .ListItem_Entry {
@@ -36,6 +38,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  font-family: $primary;
 }
 .ListItem_Buttons {
   display: flex;

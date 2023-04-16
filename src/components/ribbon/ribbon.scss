@@ -19,7 +19,17 @@
   transform-style: preserve-3d;
   width: 9.7rem;
   opacity: 0;
-  transition: opacity 20s;
+  transition: opacity 7s;
+
+  &__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: $boom;
+    font-size: 2rem;
+  }
 
   &.red {
     background-color: darken($neonRed, 5);

@@ -29,3 +29,17 @@
 .wrapper::-webkit-scrollbar {
   display: none;
 }
+
+@media (max-width: 1440px) {
+  .toDoPage__container {
+    width: 80vw;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .toDoPage__container {
+    width: unset;
+    margin: 0 auto;
+  }
+}

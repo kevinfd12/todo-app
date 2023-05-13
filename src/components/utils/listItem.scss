@@ -1,21 +1,21 @@
 @import '../../styles/mainStyles.scss';
 
-.ToDo-Wrapper {
-  background-color: $neonBlue;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
-  width: 80%;
-  margin: 2rem auto;
-  padding: 20px;
-  box-shadow: 0.2rem 0.2rem;
-}
+// .ToDo-Wrapper {
+//   background-color: $neonBlue;
+//   border-radius: 10px;
+//   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+//   width: 80%;
+//   margin: 2rem auto;
+//   padding: 20px;
+//   box-shadow: 0.2rem 0.2rem;
+// }
 
-.ToDo-Index {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-  color: white;
-  font-family: $secondary;
-}
+// .ToDo-Index {
+//   font-size: 2rem;
+//   margin-bottom: 0.5rem;
+//   color: white;
+//   font-family: $secondary;
+// }
 
 .ListItem_Wrapper {
   position: relative;
@@ -23,12 +23,11 @@
   border-radius: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
   height: auto;
-  width: 90%;
-  line-height: 5rem;
-  padding: 0 2rem;
+  width: 75%;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  margin: 0 auto;
+  margin: 2rem auto;
+  padding: 20px;
 }
 
 .ListItem_Entry {
@@ -45,4 +44,19 @@
   justify-content: center;
   gap: 2rem;
   margin-top: 1rem;
+}
+
+.checkbox_wrappers {
+  flex-direction: column;
+}
+
+.checkbox-group label {
+  display: block;
+  margin: 1px 0;
+  font-size: 1px;
+}
+
+.checkbox-group input[type='checkbox'] {
+  transform: scale(0.8);
+  margin-right: 5px;
 }

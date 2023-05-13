@@ -7,7 +7,7 @@ interface ButtonProps {
   color?: string;
 }
 
-export function Button({ value, onButtonClick, color = '#3dd1e7' }: ButtonProps) {
+export function Button({ value, onButtonClick, color = '#D6CFC7' }: ButtonProps) {
   return (
     <>
       <div className="button" onClick={onButtonClick} style={{ backgroundColor: color }}>

@@ -1,7 +1,7 @@
 @import '../../styles/variables.scss';
 .todoHeader {
   &__header {
-    width: 50vw;
+    width: 80vw;
     min-height: 100vh;
     position: relative;
     display: flex;
@@ -48,8 +48,8 @@
   }
 
   &__Foreground {
-    height: 80%;
-    bottom: 3%;
+    height: 100%;
+    bottom: -5%;
     transform: translateZ(-5px) scale(1.2);
     z-index: 2;
   }

@@ -1,13 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { InputSearch } from '../inputSearch/inputSearch';
 import { ListItem } from '../utils/listItem';
 import { TodoModal } from '../utils/TodoModal';
 import './Main.scss';
 
+enum currentColumn {
+  isOpen = 'OPEN',
+  isInProgress = 'IN PROGRESS',
+  isClosed = 'CLOSED',
+}
+
 export interface Todo {
   id: number;
   value: string;
   isNew: boolean;
+  position: currentColumn;
 }
 
 export function Main() {
@@ -15,12 +22,14 @@ export function Main() {
   const [inputValue, setInputValue] = useState('');
   const [editMode, setEditMode] = useState(false);
   const [editedTodo, setEditedTodo] = useState<Todo | undefined>(undefined);
+  const [todoWidgets, setTodoWidgets] = useState<string[]>([]);
+  const dragItem = useRef<number>(0);
 
-  console.log(todos);
+  //console.log(todos);
 
-  useEffect(() => {
-    console.log(localStorage.getItem('todos'));
-  }, []);
+  // useEffect(() => {
+  //   console.log(localStorage.getItem('todos'));
+  // }, []);
 
   const getNextId = () => {
     let id = 1;
@@ -34,14 +43,19 @@ export function Main() {
   useEffect(() => {
     const storedTodos = localStorage.getItem('todos');
     if (storedTodos) {
-      console.log(storedTodos);
+      // console.log(storedTodos);
       setTodos(JSON.parse(storedTodos));
     }
   }, []);
 
   const handleSubmit = () => {
     if (inputValue !== '') {
-      const newTodo = { id: getNextId(), value: inputValue, isNew: true };
+      const newTodo = {
+        id: getNextId(),
+        value: inputValue,
+        isNew: true,
+        position: currentColumn.isOpen,
+      };
       setTodos([newTodo, ...todos]);
       updateLocalStorage([newTodo, ...todos]);
       setInputValue('');
@@ -61,6 +75,21 @@ export function Main() {
     updateLocalStorage([editedTodo, ...newTodos]);
     handleEditMode(undefined);
   };
+
+  const dragStart = (e: React.DragEvent, position: number) => {
+    dragItem.current = position;
+    e.dataTransfer.setData('widgetType', `${position}`);
+    console.log(e.dataTransfer);
+  };
+
+  function handleOnDrop(e: React.DragEvent) {
+    const widgetType = e.dataTransfer.getData('widgetType') as string;
+    setTodoWidgets([...todoWidgets, widgetType]);
+  }
+
+  function handleDragOver(e: React.DragEvent) {
+    e.preventDefault();
+  }
 
   const handleEditMode = (todo: Todo | undefined) => {
     setEditMode((isEditOn) => !isEditOn);
@@ -89,22 +118,6 @@ export function Main() {
   return (
     <>
       <div className="main">
-        <InputSearch
-          handleSubmit={handleSubmit}
-          inputValue={inputValue}
-          setInputValue={setInputValue}
-        />
-        {todos.map((todo, index, arr) => (
-          <ListItem
-            todo={todo}
-            handleDelete={handleDelete}
-            index={index + 1}
-            arrLength={arr.length}
-            handleEditMode={handleEditMode}
-            key={todo.id}
-            isNewHandler={isNewHandler}
-          />
-        ))}
         {editMode && (
           <TodoModal
             handleEditMode={handleEditMode}
@@ -113,6 +126,64 @@ export function Main() {
             handleModalSubmit={handleModalSubmit}
           />
         )}
+        <InputSearch
+          handleSubmit={handleSubmit}
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+        />
+        <div className="main_wrapper">
+          <div className="columnHeaders" onDrop={handleOnDrop} onDragOver={handleDragOver}>
+            <h2>Open Tasks</h2>
+            {todos
+              .filter((todo) => todo.position === currentColumn.isOpen)
+              .map((todo, index, arr) => (
+                <ListItem
+                  todo={todo}
+                  handleDelete={handleDelete}
+                  index={index + 1}
+                  arrLength={arr.length}
+                  handleEditMode={handleEditMode}
+                  key={todo.id}
+                  isNewHandler={isNewHandler}
+                  dragStart={dragStart}
+                />
+              ))}
+          </div>
+          <div className="columnHeaders" onDrop={handleOnDrop} onDragOver={handleDragOver}>
+            <h2>In Progress</h2>
+            {todos
+              .filter((todo) => todo.position === currentColumn.isInProgress)
+              .map((todo, index, arr) => (
+                <ListItem
+                  todo={todo}
+                  handleDelete={handleDelete}
+                  index={index + 1}
+                  arrLength={arr.length}
+                  handleEditMode={handleEditMode}
+                  key={todo.id}
+                  isNewHandler={isNewHandler}
+                  dragStart={dragStart}
+                />
+              ))}
+          </div>
+          <div className="columnHeaders" onDrop={handleOnDrop} onDragOver={handleDragOver}>
+            <h2>Closed Tasks</h2>
+            {todos
+              .filter((todo) => todo.position === currentColumn.isClosed)
+              .map((todo, index, arr) => (
+                <ListItem
+                  todo={todo}
+                  handleDelete={handleDelete}
+                  index={index + 1}
+                  arrLength={arr.length}
+                  handleEditMode={handleEditMode}
+                  key={todo.id}
+                  isNewHandler={isNewHandler}
+                  dragStart={dragStart}
+                />
+              ))}
+          </div>
+        </div>
       </div>
     </>
   );

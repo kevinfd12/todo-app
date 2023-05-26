@@ -17,12 +17,11 @@ export function Dropdown({ color = '#D6CFC7', currentTodo, setTodos }: DropdownP
 
   const onOptionClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const position = e.currentTarget.innerText as currentColumn;
+    const updatedTodo = { ...currentTodo, position };
     setTodos((todos: Todo[]) => {
-      const todosEdited = todos.map((todo) => todo.id === currentTodo.id);
-      console.log(todosEdited);
-      return todos;
+      const todosEdited = todos.map((todo) => (todo.id === currentTodo.id ? updatedTodo : todo));
+      return todosEdited;
     });
-    console.log(e.currentTarget.innerText);
   };
 
   return (

@@ -41,9 +41,9 @@
 }
 .ListItem_Buttons {
   display: flex;
-  justify-content: center;
-  gap: 2rem;
+  justify-content: space-between;
   margin-top: 1rem;
+  gap: 2rem;
 }
 
 .checkbox_wrappers {

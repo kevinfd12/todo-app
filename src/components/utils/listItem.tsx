@@ -1,6 +1,7 @@
 import { Button } from '../button/button';
 import { Todo } from '../main/Main';
 import { Ribbon } from '../ribbon/ribbon';
+import { Dropdown } from './dropdown';
 import './listItem.scss';
 
 interface ListItemProps {
@@ -9,6 +10,7 @@ interface ListItemProps {
   index: number;
   arrLength: number;
   handleEditMode: (todo: Todo) => void;
+  setTodos: (todo: (todo: Todo[]) => Todo[]) => void;
   isNewHandler: any;
   dragStart: any;
 }
@@ -17,6 +19,7 @@ export const ListItem = ({
   todo,
   handleDelete,
   index,
+  setTodos,
   arrLength,
   dragStart,
   handleEditMode,
@@ -34,6 +37,7 @@ export const ListItem = ({
         <Button value={'delete'} onButtonClick={() => handleDelete(todo)} color="#877F7D"></Button>
         <Button value={'edit'} onButtonClick={() => handleEditMode(todo)}></Button>
       </div>
+      <Dropdown currentTodo={todo} setTodos={setTodos}></Dropdown>
     </div>
   );
 };

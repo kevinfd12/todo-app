@@ -4,7 +4,7 @@ import { ListItem } from '../utils/listItem';
 import { TodoModal } from '../utils/TodoModal';
 import './Main.scss';
 
-enum currentColumn {
+export enum currentColumn {
   isOpen = 'OPEN',
   isInProgress = 'IN PROGRESS',
   isClosed = 'CLOSED',
@@ -146,6 +146,7 @@ export function Main() {
                   key={todo.id}
                   isNewHandler={isNewHandler}
                   dragStart={dragStart}
+                  setTodos={setTodos}
                 />
               ))}
           </div>
@@ -163,6 +164,7 @@ export function Main() {
                   key={todo.id}
                   isNewHandler={isNewHandler}
                   dragStart={dragStart}
+                  setTodos={setTodos}
                 />
               ))}
           </div>
@@ -180,6 +182,7 @@ export function Main() {
                   key={todo.id}
                   isNewHandler={isNewHandler}
                   dragStart={dragStart}
+                  setTodos={setTodos}
                 />
               ))}
           </div>

@@ -47,11 +47,20 @@
   &__list {
     position: absolute;
     flex-direction: column;
-    top: 100%;
     left: 0;
     background-color: lighten(#d6cfc7, 10%);
     width: 100%;
     z-index: 2;
+
+    &__normal {
+      @extend .dropdown__list;
+      top: 100%;
+    }
+
+    &__bottom {
+      @extend .dropdown__list;
+      bottom: 100%;
+    }
   }
 
   &__option {
